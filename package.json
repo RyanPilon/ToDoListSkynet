@@ -10,6 +10,7 @@
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "skynet-js": "^4.0.10-beta",
+    "uuidv4": "^6.2.10",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

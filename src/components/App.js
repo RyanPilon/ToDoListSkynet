@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { uuid } from "uuidv4";
 import './App.css';
 import Header from './Header';
 import AddToDo from './AddToDo';
-import DeleteToDo from './DeleteToDo';
 import ToDoList from './ToDoList';
 
 function App() {
@@ -10,7 +10,14 @@ function App() {
   const [todos, setToDos] = useState([])
 
   const addTaskHandler = (task) => {
-    setToDos([...todos, task]);
+    setToDos([...todos, {id: uuid(), ...task }]);
+  };
+  const removeTaskHandler = (id) => {
+    const newTaskList = todos.filter((task) => {
+      return task.id !== id;
+    });
+
+    setToDos(newTaskList);
   }
 
   useEffect(() =>{
@@ -27,8 +34,7 @@ function App() {
   <div className="ui container">
     <Header />
     <AddToDo addTaskHandler={addTaskHandler} />
-    {/* <DeleteToDo /> */}
-    <ToDoList todos={todos} />
+    <ToDoList todos={todos} getTaskId={ removeTaskHandler }/>
     </div>
   );
 }

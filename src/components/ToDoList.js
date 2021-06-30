@@ -3,9 +3,17 @@ import TaskCard from "./TaskCard"
 
 const ToDoList = (props) => {
 
-    const renderToDoList = props.todos.map((todo) => {
+        const deleteTaskHandler = (id) => {
+            props.getTaskId(id);
+        };
+
+    const renderToDoList = props.todos.map((task) => {
         return (
-            <TaskCard todo={todo}></TaskCard>
+            <TaskCard
+                task={task}
+                clickHandler={deleteTaskHandler}
+                key= {task.id}
+                ></TaskCard>
         );
     })
     return <div className="ui celled list">
