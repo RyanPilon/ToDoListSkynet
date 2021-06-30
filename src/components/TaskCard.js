@@ -1,7 +1,7 @@
 import React from "react";
 
 const TaskCard = (props) => {
-    const { id, task } = props.todo;
+    const { task } = props.todo;
     return(
         <div className="item">
                 <div className="content">
